@@ -12,7 +12,7 @@ var direction = 1
 func _process(delta: float) -> void:
 	if ray_cast_left.is_colliding():
 		direction = 1
-		animated_sprite_2d.flip_h = true
+		animated_sprite_2d.flip_h = false
 
 
 	if ray_cast_right.is_colliding():

@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://b47xg11iueobi"]
+[gd_scene load_steps=16 format=3 uid="uid://b47xg11iueobi"]
 
 [ext_resource type="PackedScene" uid="uid://qhp5ruxpc333" path="res://scenes/player.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://b6wmvu0bkcm1i" path="res://game_manager.gd" id="1_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://cgmvu5euk118f" path="res://assets/sprites/world_tileset.png" id="2_e2o6t"]
+[ext_resource type="FontFile" uid="uid://b1drppujca0ji" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_vef74"]
 [ext_resource type="PackedScene" uid="uid://cda7o63w630ce" path="res://scenes/platform.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cc83fhlt0c5dt" path="res://scenes/coin.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://c2f0raadadre6" path="res://scenes/killzone.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://d3g6tucn6vu4" path="res://scenes/green_slime.tscn" id="6_ryrav"]
+[ext_resource type="FontFile" uid="uid://bkxxfhnupu0j8" path="res://assets/fonts/PixelOperator8.ttf" id="7_eow3j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feb5d"]
 texture = ExtResource("2_e2o6t")
@@ -215,6 +218,20 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_j5wjh")
+
+[node name="end_text" type="Label" parent="GameManager"]
+offset_left = 706.0
+offset_top = -66.0
+offset_right = 808.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("2_vef74")
+theme_override_font_sizes/font_size = 8
+text = "You collectet {{x}} coins"
+autowrap_mode = 2
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-3, -1)
 tile_set = SubResource("TileSet_fc0e3")
@@ -281,3 +298,15 @@ autoplay = "move"
 
 [node name="green_slime" parent="." instance=ExtResource("6_ryrav")]
 position = Vector2(61, -3)
+
+[node name="story_text_1" type="Label" parent="."]
+offset_left = -17.0
+offset_top = -48.0
+offset_right = 280.0
+offset_bottom = -25.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_eow3j")
+theme_override_font_sizes/font_size = 8
+text = "Oh noo, those beasts want to... well do nothing?"
